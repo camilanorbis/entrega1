@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "title": "Botella",
+    "description": "Botella rosa",
+    "code": "1234",
+    "price": 2573,
+    "status": true,
+    "stock": 3,
+    "category": "cocina",
+    "thumbnails": [
+      "img1",
+      "img2",
+      "img3"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Monitor HD",
+    "description": "Botella azul",
+    "code": "1237",
+    "price": 26563,
+    "status": true,
+    "stock": 9,
+    "category": "tecnologia",
+    "thumbnails": [
+      "img1",
+      "img2",
+      "img3"
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Laptop",
+    "description": "Lenovo",
+    "code": "1236",
+    "price": 125563,
+    "status": true,
+    "stock": 6,
+    "category": "tecnologia",
+    "thumbnails": [
+      "img1",
+      "img2",
+      "img3"
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Laptop",
+    "description": "Lenovo",
+    "code": "1236",
+    "price": 125563,
+    "status": true,
+    "stock": 6,
+    "category": "tecnologia",
+    "thumbnails": [
+      "img1",
+      "img2",
+      "img3"
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Jabon",
+    "description": "Jabon de manos",
+    "code": "abc",
+    "price": 125,
+    "status": true,
+    "stock": 13,
+    "category": "Cuidado personal",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  }
+]
