@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import ProductManager from "./ProductManager.js";
+import { nanoid } from "nanoid";
 
 let carts = [];
 
@@ -13,12 +14,13 @@ export default class CartManager {
         try {
             const fileContent = await fs.readFile(this.path,'utf-8');
             carts = JSON.parse(fileContent);
-            const newCart = {id: carts.length + 1, products: []};
+            const id = nanoid(5);
+            const newCart = {id: id, products: []};
             carts.push(newCart);
             await fs.writeFile(this.path, JSON.stringify(carts,null,2));
-            console.log(`Carrito creado correctamente`);
+            return newCart;
         } catch (error) {
-            console.error(`No se pudo crear el carrito`);
+            throw error;
         }
     }
 
@@ -28,16 +30,10 @@ export default class CartManager {
             carts = JSON.parse(fileContent);
             
             const cart = carts.filter(cart => cart.id === id);
-            if (!cart){
-                console.log(`No existe carrito con el id ${id}`);
-            } else {
-                console.log(`El carrito solicitado es ${cart}`);
-            }
-
             return cart;
             
         } catch (error) {
-            console.error(`No se pudo obtener el carrito con id ${id}`);
+            throw error;
         }
     }
 
@@ -50,13 +46,11 @@ export default class CartManager {
             if (cart) {
                 cart.products.push(product);
                 await fs.writeFile(this.path,JSON.stringify(carts,null,2));
-            } else {
-                console.log(`No existe el carrito seleccionado`);
-            }
+            } 
 
 
         } catch (error) {
-            console.error(`No se pudo agregar el producto`);
+            throw error;
         }
     }
 

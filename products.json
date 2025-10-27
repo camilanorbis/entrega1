@@ -1,72 +1,42 @@
 [
   {
-    "id": 1,
-    "title": "Botella",
-    "description": "Botella rosa",
-    "code": "1234",
-    "price": 2573,
+    "id": "aV6pS",
+    "title": "Shampoo elvive amenixil",
+    "description": "Shampoo elvive anti caida con amenixil",
+    "code": "AKDF",
+    "price": 475,
     "status": true,
-    "stock": 3,
-    "category": "cocina",
+    "stock": 12,
+    "category": "Cuidado personal",
     "thumbnails": [
-      "img1",
-      "img2",
-      "img3"
+      "link1",
+      "link2",
+      "link3"
     ]
   },
   {
-    "id": 4,
-    "title": "Monitor HD",
-    "description": "Botella azul",
-    "code": "1237",
-    "price": 26563,
+    "id": "q_wm8",
+    "title": "Acondicionador elvive",
+    "description": "Acondicionador elvive anti caida con amenixil",
+    "code": "AKDC",
+    "price": 375,
     "status": true,
     "stock": 9,
-    "category": "tecnologia",
+    "category": "Cuidado personal",
     "thumbnails": [
-      "img1",
-      "img2",
-      "img3"
+      "link1",
+      "link2",
+      "link3"
     ]
   },
   {
-    "id": 1,
-    "title": "Laptop",
-    "description": "Lenovo",
-    "code": "1236",
-    "price": 125563,
+    "id": "JZPIU",
+    "title": "Desenredante elvive",
+    "description": "Desenredante elvive anti caida con amenixil",
+    "code": "AKFF",
+    "price": 263,
     "status": true,
-    "stock": 6,
-    "category": "tecnologia",
-    "thumbnails": [
-      "img1",
-      "img2",
-      "img3"
-    ]
-  },
-  {
-    "id": 1,
-    "title": "Laptop",
-    "description": "Lenovo",
-    "code": "1236",
-    "price": 125563,
-    "status": true,
-    "stock": 6,
-    "category": "tecnologia",
-    "thumbnails": [
-      "img1",
-      "img2",
-      "img3"
-    ]
-  },
-  {
-    "id": 1,
-    "title": "Jabon",
-    "description": "Jabon de manos",
-    "code": "abc",
-    "price": 125,
-    "status": true,
-    "stock": 13,
+    "stock": 3,
     "category": "Cuidado personal",
     "thumbnails": [
       "link1",

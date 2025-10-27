@@ -11,83 +11,139 @@ const basePathCarts = "/api/carts"
 const productManager = new ProductManager('products.json');
 const cartManager = new CartManager('carts.json');
 
-//rutas bajo /api/products/
 
-//GET => /
-//debe listar todos los productos en el archivo products.json
-app.get(`{basePathProducts}`, async (req,res) => {
+app.get(`${basePathProducts}`, async (req,res) => {
     try {
         const fileContent = await productManager.getProducts();
-        res.json({ products: JSON.parse(fileContent) });
+        if (fileContent != null) {
+            res.status(200).json({ status: 'success', result: JSON.parse(fileContent) });
+        } else {
+            res.status(400).json({ status: 'error', result: 'No fue posible obtener los productos' })
+        }
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los productos' });
+        res.status(500).json({ status: 'error', result: `Error al obtener los productos. Detalle: ${error}` });
     }
 })
 
-//GET => /pid
-//debe traer solo el producto con el id proporcionado
-app.get(`{basePathProducts}/:pid`, async (req,res) => {
+
+app.get(`${basePathProducts}/:pid`, async (req,res) => {
     try {
-        const pid = parseInt(req.params.pid);
+        const pid = req.params.pid;
         const product = await productManager.getProductById(pid);
 
         if (!product) {
-            return res.status(404).json({ error: `Producto con id ${pid} no encontrado` });
+            return res.status(404).json({ status: 'error', result: `Producto con id ${pid} no encontrado` });
         } 
 
-        res.json(product);
+        res.status(200).json({ status: 'success', result: product });
 
     } catch (error) {
-        res.status(500).json({ error: `Error al obtener el producto con id ${parseInt(req.params.pid)}` })
+        res.status(500).json({ status: 'error', result: `Error al obtener el producto con id ${req.params.pid}. Detalle: ${error}` })
     }
 })
 
-//POST => /
-//debe agregar un nuevo producto con los campos { id (autogenerado), title, description, code, price, status, stock, category, thumbnails }
-app.post(`{basePathProducts}`, async (req,res) => {
+
+app.post(`${basePathProducts}`, async (req,res) => {
     try{
         const product = req.body;
-        await productManager.addProduct(product);
-        res.status(201).json({ success: 'El producto fue agregado con éxito' })
+        const productAdded = await productManager.addProduct(product);
+        if (productAdded) {
+            res.status(201).json({ status: 'success', result: 'El producto fue agregado con éxito' })
+        } else {
+            res.status(400).json({ status: 'error', result: 'No fue posible agregar el producto'});
+        }
     } catch (error) {
-        res.status(500).json({ error: 'No fue posible agregar el producto' });
+        res.status(500).json({ status: 'error', result: `No fue posible agregar el producto. Detalle: ${error}` });
     }
 })
 
-//PUT => /pid
-//actualiza un producto por los campos enviados desde el body, no se debe actualizar ni eliminar el id al momento de hacer la actualizacion
-app.put(`{basePathProducts}/:pid`, async (req,res) => {
+
+app.put(`${basePathProducts}/:pid`, async (req,res) => {
     try {
-        const pid = parseInt(req.params.pid);
+        const pid = req.params.pid;
         const product = req.body;
         const productModified = await productManager.modifyProduct(pid,product)
 
         if (productModified) {
-            res.json( {success: 'Producto modificado', producto: productModified })
+            res.status(200).json( {status: 'success', result: productModified })
         } else {
-            res.status(404).json({ error: `El producto con id ${pid} no existe` })
+            res.status(404).json({ status: 'error', result: `El producto con id ${pid} no existe` })
         }
 
     } catch (error) {
-        res.status(500).json({ error: `Error al intentar modificar el producto` })
+        res.status(500).json({ status: 'error', result: `Error al intentar modificar el producto. Detalle: ${error}` })
     }
 })
 
-//DELETE => /pid
-//elimina el producto con  el pid indicado.
-app.delete(`{basePathProducts}/:pid`, async (req,res) => {
+
+app.delete(`${basePathProducts}/:pid`, async (req,res) => {
     try {
-        const pid = parseInt(req.params.pid);
+        const pid = req.params.pid;
         const productDeleted = await productManager.deleteProduct(pid);
         if (productDeleted){
-            res.json({ success: `Producto con id ${pid} eliminado con éxito` })
+            res.status(200).json({ status: 'success', result:`Producto con id ${pid} eliminado con éxito` })
         } else {
-            res.status(404).json({ error: `No existe producto con id ${pid}` })
+            res.status(404).json({ status: 'error', result: `No existe producto con id ${pid}` })
         }
     } catch (error) {
-        res.status(500).json({ error: `No fue posible eliminar el producto con id ${parseInt(req.params.pid)}`})
+        res.status(500).json({ status: 'error', result: `No fue posible eliminar el producto con id ${req.params.pid}. Detalle: ${error}`})
     }
 })
+
+//POST => /
+//crea un nuevo carrito con la siguiente estructura: { id: autogenerado, products: []}
+app.post(`${basePathCarts}`, async (req,res) => {
+    try {
+        const newCart = await cartManager.createCart(); 
+        
+        if (!newCart) {
+            res.status(400).json({ status: 'error', result: 'No fue posible crear el carrito' })
+        } else {
+            res.status(201).json({ status: 'success', result: 'Carrito creado con éxito' })
+        }
+        
+    } catch (error) {
+        res.status(500).json({ status: 'error', result: `No fue posible crear el carrito. Detalle: ${error}` })
+    }
+})
+
+//GET => /:cid
+//debe listar los productos que pertenecen al carrito con el cid proporcionado
+app.get(`${basePathCarts}/:cid`, async (req,res) => {
+    try {
+        const cid = req.params.cid;
+        let productsOnCart = [];
+
+        const cart = await cartManager.getCartById(cid);
+        if (cart) {
+            const products = cart.products;
+
+            products.map(product => {
+                const productToAdd = productManager.getProductById(product.id);
+                productsOnCart.push(productToAdd);
+            })
+        }
+
+        res.json({ status: 'success', result: JSON.parse(productsOnCart) });
+    } catch (error) {
+        res.status(500).json({ status: 'error', result: `No fue posible obtener los productos del carrito ${req.params.cid}. Detalle: ${error} ` })
+    }
+})
+
+//POST => /:cid/product/:pid
+//debe agregar el producto al arreglo products del carrito seleccionado utilzando el siguiente formato 
+//product { solo debe contener el id del producto }
+//quantity: debe contener el numero de ejemplares de dicho producto que se agregara de uno en uno
+//si un producto ya existente intenta agregarse, se debe incrementar el campo quantity de dicho producto 
+app.post(`${basePathCarts}/:cid/product/:pid`, async (req,res) => {
+    try {
+        const cid = req.params.id;
+
+    } catch (error) {
+        res.status(500).json({ status: 'error', result: `No fue posible agregar el producto al carrito. Detalle: ${error}` });
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en el puerto ${PORT}`);
