@@ -90,8 +90,7 @@ app.delete(`${basePathProducts}/:pid`, async (req,res) => {
     }
 })
 
-//POST => /
-//crea un nuevo carrito con la siguiente estructura: { id: autogenerado, products: []}
+
 app.post(`${basePathCarts}`, async (req,res) => {
     try {
         const newCart = await cartManager.createCart(); 
@@ -107,37 +106,35 @@ app.post(`${basePathCarts}`, async (req,res) => {
     }
 })
 
-//GET => /:cid
-//debe listar los productos que pertenecen al carrito con el cid proporcionado
+
 app.get(`${basePathCarts}/:cid`, async (req,res) => {
     try {
         const cid = req.params.cid;
-        let productsOnCart = [];
+    
+        const products = await cartManager.getCartProducts(cid);
 
-        const cart = await cartManager.getCartById(cid);
-        if (cart) {
-            const products = cart.products;
+        if (products === null) 
+            res.json({ status: 'error', result: 'El carrito no existe o no tiene productos en él todavía' })
+        else 
+            res.json({ status: 'success', result: products });
 
-            products.map(product => {
-                const productToAdd = productManager.getProductById(product.id);
-                productsOnCart.push(productToAdd);
-            })
-        }
-
-        res.json({ status: 'success', result: JSON.parse(productsOnCart) });
     } catch (error) {
         res.status(500).json({ status: 'error', result: `No fue posible obtener los productos del carrito ${req.params.cid}. Detalle: ${error} ` })
     }
 })
 
-//POST => /:cid/product/:pid
-//debe agregar el producto al arreglo products del carrito seleccionado utilzando el siguiente formato 
-//product { solo debe contener el id del producto }
-//quantity: debe contener el numero de ejemplares de dicho producto que se agregara de uno en uno
-//si un producto ya existente intenta agregarse, se debe incrementar el campo quantity de dicho producto 
+
 app.post(`${basePathCarts}/:cid/product/:pid`, async (req,res) => {
     try {
-        const cid = req.params.id;
+        const cid = req.params.cid;
+        const pid = req.params.pid;
+        const cart = await cartManager.addProductToCart(pid,cid);
+
+        if (cart) {
+            res.status(200).json({ status: 'success', result: cart })
+        } else {
+            res.status(404).json({ status: 'error', result: `No se encontró el carrito con id ${cid}` })
+        }
 
     } catch (error) {
         res.status(500).json({ status: 'error', result: `No fue posible agregar el producto al carrito. Detalle: ${error}` });

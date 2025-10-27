@@ -43,5 +43,110 @@
       "link2",
       "link3"
     ]
+  },
+  {
+    "id": "gDbcS",
+    "title": "Paracetamol 500mg",
+    "description": "Analgesico y antipirético",
+    "code": "PARA500",
+    "price": 150,
+    "status": true,
+    "stock": 20,
+    "category": "Medicamentos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "bhZAC",
+    "title": "Ibuprofeno 400mg",
+    "description": "Anti-inflamatorio y analgésico",
+    "code": "IBU400",
+    "price": 180,
+    "status": true,
+    "stock": 15,
+    "category": "Medicamentos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "CXrQu",
+    "title": "Jarabe para la tos",
+    "description": "Alivio de tos seca",
+    "code": "TOS123",
+    "price": 220,
+    "status": true,
+    "stock": 10,
+    "category": "Medicamentos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "P_5KP",
+    "title": "Vitamina C 1000mg",
+    "description": "Refuerza el sistema inmunológico",
+    "code": "VITC1000",
+    "price": 300,
+    "status": true,
+    "stock": 25,
+    "category": "Suplementos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "0KOxj",
+    "title": "Protector solar FPS50",
+    "description": "Protección contra rayos UV",
+    "code": "SUN50",
+    "price": 350,
+    "status": true,
+    "stock": 20,
+    "category": "Cuidado personal",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "BU4rO",
+    "title": "Crema antiinflamatoria",
+    "description": "Alivio de dolor muscular y articular",
+    "code": "CREA01",
+    "price": 220,
+    "status": true,
+    "stock": 14,
+    "category": "Cuidado de la piel",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "pSYuw",
+    "title": "Spray nasal descongestivo",
+    "description": "Alivio de congestión nasal",
+    "code": "NAS123",
+    "price": 180,
+    "status": true,
+    "stock": 18,
+    "category": "Medicamentos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
   }
 ]
