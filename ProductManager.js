@@ -59,7 +59,7 @@ export default class ProductManager {
         try {
             const fileContent = await fs.readFile(this.path,'utf-8');
             products = JSON.parse(fileContent);
-            const product = products.filter(product => product.id === id);
+            const product = products.find(product => product.id === id);
             return product;
         } catch (error) {
             throw error;

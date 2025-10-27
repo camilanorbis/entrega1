@@ -133,7 +133,7 @@ app.post(`${basePathCarts}/:cid/product/:pid`, async (req,res) => {
         if (cart) {
             res.status(200).json({ status: 'success', result: cart })
         } else {
-            res.status(404).json({ status: 'error', result: `No se encontró el carrito con id ${cid}` })
+            res.status(404).json({ status: 'error', result: `No se encontró el carrito con id ${cid} o el producto ${pid} no existe` })
         }
 
     } catch (error) {

@@ -61,6 +61,8 @@ export default class CartManager {
             if (product) {
                 product.quantity += 1;
             } else {
+                const productExists = await productManager.getProductById(productId)
+                if (!productExists) return null;
                 cart.products.push({ id: productId, quantity: 1 });
             }
             
