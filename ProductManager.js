@@ -13,6 +13,9 @@ export default class ProductManager {
         try {
             const fileContent = await fs.readFile(this.path,'utf-8');
             const { title, description, code, price, status, stock, category, thumbnails } = newProduct;
+            if (!title || !description || !code || price == null || stock == null || !category) {
+                return null;
+            }   
             const id = nanoid(5);
             const productToAdd = {id, title, description, code, price, status, stock, category, thumbnails};
             products = JSON.parse(fileContent);
@@ -29,13 +32,24 @@ export default class ProductManager {
             const fileContent = await fs.readFile(this.path,'utf-8');
             products = JSON.parse(fileContent);
 
-            //const { id, title, description, code, price, status, stock, category, thumbnails } = productModified;
             const index = products.findIndex(product => product.id === id);
 
             if (index !== -1){
-                products[index] = { ...products[index], ...productModified };
-                await fs.writeFile(this.path, JSON.stringify(products,null,2));
+                const originalProduct = products[index];
+
+                const validKeys = Object.keys(originalProduct);
+                const filteredUpdate = {};
+                for (const key of Object.keys(productModified)) {
+                    if (!validKeys.includes(key)) {
+                        return null;
+                    }
+                    filteredUpdate[key] = productModified[key];
+                }
+
+                products[index] = { ...originalProduct, ...filteredUpdate };
+                await fs.writeFile(this.path, JSON.stringify(products, null, 2));
                 return products[index];
+
             } else {
                 return null;
             }

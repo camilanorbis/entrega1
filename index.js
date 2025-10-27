@@ -48,9 +48,9 @@ app.post(`${basePathProducts}`, async (req,res) => {
         const product = req.body;
         const productAdded = await productManager.addProduct(product);
         if (productAdded) {
-            res.status(201).json({ status: 'success', result: 'El producto fue agregado con éxito' })
+            res.status(201).json({ status: 'success', result: productAdded })
         } else {
-            res.status(400).json({ status: 'error', result: 'No fue posible agregar el producto'});
+            res.status(400).json({ status: 'error', result: 'Faltan campos obligatorios' });
         }
     } catch (error) {
         res.status(500).json({ status: 'error', result: `No fue posible agregar el producto. Detalle: ${error}` });
@@ -67,7 +67,7 @@ app.put(`${basePathProducts}/:pid`, async (req,res) => {
         if (productModified) {
             res.status(200).json( {status: 'success', result: productModified })
         } else {
-            res.status(404).json({ status: 'error', result: `El producto con id ${pid} no existe` })
+            res.status(404).json({ status: 'error', result: `El producto con id ${pid} no existe o el campo que intenta modificar no forma parte del producto.` })
         }
 
     } catch (error) {
@@ -98,7 +98,7 @@ app.post(`${basePathCarts}`, async (req,res) => {
         if (!newCart) {
             res.status(400).json({ status: 'error', result: 'No fue posible crear el carrito' })
         } else {
-            res.status(201).json({ status: 'success', result: 'Carrito creado con éxito' })
+            res.status(201).json({ status: 'success', result: newCart })
         }
         
     } catch (error) {

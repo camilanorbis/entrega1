@@ -122,7 +122,7 @@
   {
     "id": "BU4rO",
     "title": "Crema antiinflamatoria",
-    "description": "Alivio de dolor muscular y articular",
+    "description": "Alivio de dolor muscular y articular al instante",
     "code": "CREA01",
     "price": 220,
     "status": true,
@@ -143,6 +143,21 @@
     "status": true,
     "stock": 18,
     "category": "Medicamentos",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "ykKkV",
+    "title": "Pomada para quemaduras",
+    "description": "Cuidado y alivio de quemaduras leves",
+    "code": "POM123",
+    "price": 250,
+    "status": true,
+    "stock": 12,
+    "category": "Cuidado de la piel",
     "thumbnails": [
       "link1",
       "link2",

@@ -34,7 +34,7 @@ export default class CartManager {
             if (!cart) return null;
 
             const products = cart.products;
-            if (!products) return null;
+            if (!products) return [];
 
             for (const product of products) {
                 const productToAdd = await productManager.getProductById(product.id);
