@@ -26,9 +26,9 @@ export default class ProductManager {
         try {
             const fileContent = await fs.readFile(this.path,'utf-8');
             const { title, description, code, price, status, stock, category, thumbnails } = newProduct;
-            if (!title || !description || !code || price == null || stock == null || !category) {
+            if (!this.validateProduct(newProduct)) {
                 return null;
-            }   
+            }
             const id = nanoid(5);
             const productToAdd = {id, title, description, code, price, status, stock, category, thumbnails};
             products = JSON.parse(fileContent);
@@ -39,6 +39,31 @@ export default class ProductManager {
             throw error;
         }
     }
+
+    validateProduct(product) {
+        const { title, description, code, price, status, stock, category, thumbnails } = product;
+
+        if (!title || !description || !code || price == null || stock == null || !category || !thumbnails) {
+            return false;
+        }
+
+        if (
+            typeof title !== 'string' ||
+            typeof description !== 'string' ||
+            typeof code !== 'string' ||
+            typeof price !== 'number' ||
+            typeof stock !== 'number' ||
+            typeof status !== 'boolean' ||
+            typeof category !== 'string' ||
+            !Array.isArray(thumbnails) ||
+            !thumbnails.every(t => typeof t === 'string')
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     async modifyProduct (id,productModified) {
         try {

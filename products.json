@@ -1,58 +1,13 @@
 [
   {
-    "id": "aV6pS",
-    "title": "Shampoo elvive amenixil",
-    "description": "Shampoo elvive anti caida con amenixil",
-    "code": "AKDF",
-    "price": 475,
-    "status": true,
-    "stock": 12,
-    "category": "Cuidado personal",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
-    "id": "q_wm8",
-    "title": "Acondicionador elvive",
-    "description": "Acondicionador elvive anti caida con amenixil",
-    "code": "AKDC",
-    "price": 375,
-    "status": true,
-    "stock": 9,
-    "category": "Cuidado personal",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
-    "id": "JZPIU",
-    "title": "Desenredante elvive",
-    "description": "Desenredante elvive anti caida con amenixil",
-    "code": "AKFF",
-    "price": 263,
-    "status": true,
-    "stock": 3,
-    "category": "Cuidado personal",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
-    "id": "gDbcS",
+    "id": "JwKxZ",
     "title": "Paracetamol 500mg",
     "description": "Analgesico y antipirético",
     "code": "PARA500",
     "price": 150,
     "status": true,
     "stock": 20,
-    "category": "Medicamentos",
+    "category": "Farmacia",
     "thumbnails": [
       "link1",
       "link2",
@@ -60,14 +15,14 @@
     ]
   },
   {
-    "id": "bhZAC",
+    "id": "kDy9z",
     "title": "Ibuprofeno 400mg",
     "description": "Anti-inflamatorio y analgésico",
     "code": "IBU400",
     "price": 180,
     "status": true,
     "stock": 15,
-    "category": "Medicamentos",
+    "category": "Farmacia",
     "thumbnails": [
       "link1",
       "link2",
@@ -75,14 +30,14 @@
     ]
   },
   {
-    "id": "CXrQu",
+    "id": "jOUcL",
     "title": "Jarabe para la tos",
     "description": "Alivio de tos seca",
     "code": "TOS123",
     "price": 220,
     "status": true,
     "stock": 10,
-    "category": "Medicamentos",
+    "category": "Farmacia",
     "thumbnails": [
       "link1",
       "link2",
@@ -90,14 +45,14 @@
     ]
   },
   {
-    "id": "P_5KP",
+    "id": "998lQ",
     "title": "Vitamina C 1000mg",
     "description": "Refuerza el sistema inmunológico",
     "code": "VITC1000",
     "price": 300,
     "status": true,
     "stock": 25,
-    "category": "Suplementos",
+    "category": "Farmacia",
     "thumbnails": [
       "link1",
       "link2",
@@ -105,14 +60,14 @@
     ]
   },
   {
-    "id": "0KOxj",
-    "title": "Protector solar FPS50",
-    "description": "Protección contra rayos UV",
-    "code": "SUN50",
-    "price": 350,
+    "id": "MUAEo",
+    "title": "Antibacterial gel 70%",
+    "description": "Higienizante de manos",
+    "code": "GEL70",
+    "price": 120,
     "status": true,
-    "stock": 20,
-    "category": "Cuidado personal",
+    "stock": 30,
+    "category": "Farmacia",
     "thumbnails": [
       "link1",
       "link2",
@@ -120,44 +75,44 @@
     ]
   },
   {
-    "id": "BU4rO",
-    "title": "Crema antiinflamatoria",
-    "description": "Alivio de dolor muscular y articular al instante",
-    "code": "CREA01",
-    "price": 220,
-    "status": true,
-    "stock": 14,
-    "category": "Cuidado de la piel",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
-    "id": "pSYuw",
-    "title": "Spray nasal descongestivo",
-    "description": "Alivio de congestión nasal",
-    "code": "NAS123",
-    "price": 180,
-    "status": true,
-    "stock": 18,
-    "category": "Medicamentos",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
-    "id": "ykKkV",
+    "id": "sQLu8",
     "title": "Pomada para quemaduras",
     "description": "Cuidado y alivio de quemaduras leves",
     "code": "POM123",
     "price": 250,
     "status": true,
     "stock": 12,
-    "category": "Cuidado de la piel",
+    "category": "Farmacia",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "Ccj-A",
+    "title": "Spray nasal descongestivo",
+    "description": "Alivio para la congestión nasal",
+    "code": "NAS123",
+    "price": 180,
+    "status": true,
+    "stock": 18,
+    "category": "Farmacia",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "NofhR",
+    "title": "Shampoo elvive",
+    "description": "Shampoo elvive anticaida",
+    "code": "NAS123",
+    "price": 560,
+    "status": true,
+    "stock": 18,
+    "category": "Cuidado personal",
     "thumbnails": [
       "link1",
       "link2",

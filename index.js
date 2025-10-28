@@ -50,7 +50,7 @@ app.post(`${basePathProducts}`, async (req,res) => {
         if (productAdded) {
             res.status(201).json({ status: 'success', result: productAdded })
         } else {
-            res.status(400).json({ status: 'error', result: 'Faltan campos obligatorios' });
+            res.status(400).json({ status: 'error', result: 'Faltan campos obligatorios o algún campo es incorrecto' });
         }
     } catch (error) {
         res.status(500).json({ status: 'error', result: `No fue posible agregar el producto. Detalle: ${error}` });
@@ -114,7 +114,7 @@ app.get(`${basePathCarts}/:cid`, async (req,res) => {
         const products = await cartManager.getCartProducts(cid);
 
         if (products === null) 
-            res.json({ status: 'error', result: 'El carrito no existe o no tiene productos en él todavía' })
+            res.json({ status: 'error', result: 'El carrito no existe' })
         else 
             res.json({ status: 'success', result: products });
 
