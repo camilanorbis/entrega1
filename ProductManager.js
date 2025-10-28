@@ -3,10 +3,23 @@ import { nanoid } from "nanoid";
 
 let products = [];
 
+async function ensureFile(path) {
+    try {
+        await fs.access(path);
+    } catch {
+        await fs.writeFile(path, JSON.stringify([], null, 2));
+    }
+}
+
 export default class ProductManager {
 
     constructor (path) {
         this.path = path;
+    }
+
+    async init() {
+        await ensureFile(this.path);
+        return this;
     }
 
     async addProduct (newProduct) {

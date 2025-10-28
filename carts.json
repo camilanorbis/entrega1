@@ -1,31 +1,23 @@
 [
   {
-    "id": "Og3vC",
+    "id": "ui-J8",
     "products": []
   },
   {
-    "id": "ZCnFx",
+    "id": "ktOl3",
     "products": []
   },
   {
-    "id": "eK5Ut",
+    "id": "EP4it",
     "products": [
       {
-        "id": "aV6pS",
-        "quantity": 1
-      },
-      {
-        "id": "q_wm8",
+        "id": "pSYuw",
         "quantity": 2
       },
       {
-        "id": "gDbcS",
+        "id": "ykKkV",
         "quantity": 1
       }
     ]
-  },
-  {
-    "id": "LUM0V",
-    "products": []
   }
 ]

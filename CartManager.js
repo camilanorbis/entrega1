@@ -3,11 +3,24 @@ import ProductManager from "./ProductManager.js";
 import { nanoid } from "nanoid";
 
 let carts = [];
-const productManager = new ProductManager('products.json');
+const productManager = await new ProductManager('products.json').init();
+
+async function ensureFile(path) {
+    try {
+        await fs.access(path);
+    } catch {
+        await fs.writeFile(path, JSON.stringify([], null, 2));
+    }
+}
 export default class CartManager {
 
     constructor (path) {
         this.path = path;
+    }
+
+    async init() {
+        await ensureFile(this.path);
+        return this;
     }
 
     async createCart () {

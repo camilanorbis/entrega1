@@ -8,8 +8,8 @@ app.use(express.json());
 const basePathProducts = "/api/products"
 const basePathCarts = "/api/carts"
 
-const productManager = new ProductManager('products.json');
-const cartManager = new CartManager('carts.json');
+const productManager =  await new ProductManager('products.json').init();
+const cartManager = await new CartManager('carts.json').init();
 
 
 app.get(`${basePathProducts}`, async (req,res) => {
