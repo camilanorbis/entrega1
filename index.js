@@ -7,10 +7,8 @@ const PORT = 8080;
 app.use(express.json());
 const basePathProducts = "/api/products"
 const basePathCarts = "/api/carts"
-
-const productManager =  await new ProductManager('products.json').init();
-const cartManager = await new CartManager('carts.json').init();
-
+let productManager;
+let cartManager;
 
 app.get(`${basePathProducts}`, async (req,res) => {
     try {
@@ -142,6 +140,16 @@ app.post(`${basePathCarts}/:cid/product/:pid`, async (req,res) => {
 })
 
 
-app.listen(PORT, () => {
-    console.log(`Servidor iniciado en el puerto ${PORT}`);
-})
+async function init() {
+    productManager = await new ProductManager('products.json').init();
+    cartManager = await new CartManager('carts.json').init();
+
+    app.listen(PORT, () => {
+        console.log(`Servidor iniciado en el puerto ${PORT}`);
+    });
+}
+
+init().catch(error => {
+    console.error("Error inicializando managers:", error);
+    process.exit(1);
+});
