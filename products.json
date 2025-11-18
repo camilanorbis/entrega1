@@ -60,21 +60,6 @@
     ]
   },
   {
-    "id": "MUAEo",
-    "title": "Antibacterial gel 70%",
-    "description": "Higienizante de manos",
-    "code": "GEL70",
-    "price": 120,
-    "status": true,
-    "stock": 30,
-    "category": "Farmacia",
-    "thumbnails": [
-      "link1",
-      "link2",
-      "link3"
-    ]
-  },
-  {
     "id": "sQLu8",
     "title": "Pomada para quemaduras",
     "description": "Cuidado y alivio de quemaduras leves",
@@ -112,6 +97,36 @@
     "price": 560,
     "status": true,
     "stock": 18,
+    "category": "Cuidado personal",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "6vv1B",
+    "title": "Shampoo L'oreal",
+    "description": "Shampoo l'oreal con ácido hialurónico",
+    "code": "LO123",
+    "price": 760,
+    "status": true,
+    "stock": 8,
+    "category": "Cuidado personal",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "PUe_r",
+    "title": "Acondicionador L'oreal",
+    "description": "Acondicionador l'oreal con ácido hialurónico",
+    "code": "LO124",
+    "price": 660,
+    "status": true,
+    "stock": 7,
     "category": "Cuidado personal",
     "thumbnails": [
       "link1",
