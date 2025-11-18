@@ -9,7 +9,7 @@ Este proyecto implementa un backend con **Express**, vistas con **Handlebars**, 
 ### **`/`**
 Muestra los productos actuales renderizados desde `home.handlebars`.
 
-### **`/realTimeProducts`**
+### **`/realtimeproducts`**
 Vista donde los productos se actualizan **en tiempo real** cuando se agrega, modifica o elimina un producto, renderizados desde `realTimeProducts.handlebars`
 
 ---
@@ -52,7 +52,7 @@ Elimina un producto.
 - Renderiza la lista actual de productos.
 - Los productos provienen del endpoint `/api/products`.
 
-### **`/realTimeProducts`**
+### **`/realtimeproducts`**
 - Muestra los productos.
 - Se actualizan automáticamente en tiempo real cuando se ejecutan las rutas:
   - **POST** → agregar producto

@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get("/", rootHandler)
 
-router.get("/realTimeProducts", getRealTimeProducts)
+router.get("/realtimeproducts", getRealTimeProducts)
 
 export default router;
