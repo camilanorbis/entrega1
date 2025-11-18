@@ -55,6 +55,8 @@ export const modifyProduct = async (req,res) => {
         const productModified = await productManager.modifyProduct(pid,product)
 
         if (productModified) {
+            const productsUpdated = JSON.parse(await productManager.getProducts());
+            req.app.locals.servidorWS.emit("productsUpdated", productsUpdated);
             res.status(200).json( {status: 'success', result: productModified })
         } else {
             res.status(404).json({ status: 'error', result: `El producto con id ${pid} no existe o el campo que intenta modificar no forma parte del producto.` })

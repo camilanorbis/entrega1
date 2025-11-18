@@ -32,7 +32,7 @@
   {
     "id": "jOUcL",
     "title": "Jarabe para la tos",
-    "description": "Alivio de tos seca",
+    "description": "Alivio para la tos seca",
     "code": "TOS123",
     "price": 220,
     "status": true,
@@ -127,6 +127,21 @@
     "price": 660,
     "status": true,
     "stock": 7,
+    "category": "Cuidado personal",
+    "thumbnails": [
+      "link1",
+      "link2",
+      "link3"
+    ]
+  },
+  {
+    "id": "2NkZG",
+    "title": "Serum L'oreal",
+    "description": "Serum de noche",
+    "code": "LSE154",
+    "price": 1660,
+    "status": true,
+    "stock": 5,
     "category": "Cuidado personal",
     "thumbnails": [
       "link1",
