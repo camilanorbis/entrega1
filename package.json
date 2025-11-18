@@ -2,13 +2,13 @@
   "name": "entrega_uno",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://github.com/camilanorbis/entrega1#readme",
+  "homepage": "https://github.com/camilanorbis/entrega2#readme",
   "bugs": {
-    "url": "https://github.com/camilanorbis/entrega1/issues"
+    "url": "https://github.com/camilanorbis/entrega2/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/camilanorbis/entrega1.git"
+    "url": "git+https://github.com/camilanorbis/entrega2.git"
   },
   "license": "ISC",
   "author": "",
