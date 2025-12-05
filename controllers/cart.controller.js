@@ -1,50 +1,61 @@
+import CartModel from "../models/cart.model.js";
+
 export const createCart = async (req,res) => {
     try {
-        const cartManager = req.app.locals.productManager;
-        const newCart = await cartManager.createCart(); 
-        
-        if (!newCart) {
-            res.status(400).json({ status: 'error', result: 'No fue posible crear el carrito' })
+        const response = await CartModel.create({})
+
+        if (!response) {
+            res.status(400).json({ status: 'error', payload: 'No fue posible crear el carrito' })
         } else {
-            res.status(201).json({ status: 'success', result: newCart })
+            res.status(201).json({ status: 'success', payload: response })
         }
-        
     } catch (error) {
-        res.status(500).json({ status: 'error', result: `No fue posible crear el carrito. Detalle: ${error}` })
+        res.status(500).json({ status: 'error', payload: `No fue posible crear el carrito. Detalle: ${error}` })
     }
 }
 
 export const getCartProducts = async (req,res) => {
     try {
-        const cartManager = req.app.locals.productManager;
-        const cid = req.params.cid;
-    
-        const products = await cartManager.getCartProducts(cid);
+        const { cid } = req.params
+        const cart = await CartModel.findById(cid)
 
-        if (products === null) 
-            res.json({ status: 'error', result: 'El carrito no existe' })
-        else 
-            res.json({ status: 'success', result: products });
+        if (cart) {
+            const response = cart.products;
+            res.status(200).json({ status: 'success', payload: response })
+        } else {
+            res.status(404).json({ status: 'error', payload: `El carrito con id ${cid} no existe` })
+        }
 
     } catch (error) {
-        res.status(500).json({ status: 'error', result: `No fue posible obtener los productos del carrito ${req.params.cid}. Detalle: ${error} ` })
+        res.status(500).json({ status: 'error', payload: `No fue posible obtener los productos del carrito ${req.params.cid}` })
     }
 }
 
 export const addProductToCart = async (req,res) => {
     try {
-        const cartManager = req.app.locals.productManager;
-        const cid = req.params.cid;
-        const pid = req.params.pid;
-        const cart = await cartManager.addProductToCart(pid,cid);
+        const { pid } = req.params
+        const { cid } = req.params 
 
-        if (cart) {
-            res.status(200).json({ status: 'success', result: cart })
+        const cart = await CartModel.findById(cid)
+
+        if(!cart) {
+            res.status(404).json({ status: 'error', payload: `El carrito con id ${req.params.cid} no existe` })
+        } 
+        
+        const productInCart = cart.products.find(product => product.productId === pid);
+
+        if (productInCart) {
+            productInCart.quantity += 1;
         } else {
-            res.status(404).json({ status: 'error', result: `No se encontró el carrito con id ${cid} o el producto ${pid} no existe` })
+            cart.products.push({ productId: pid,quantity: 1 });
         }
 
+        const updated = await cart.save();
+        res.status(200).json({ status: 'success', payload: updated });
+
+
+
     } catch (error) {
-        res.status(500).json({ status: 'error', result: `No fue posible agregar el producto al carrito. Detalle: ${error}` });
+        res.status(500).json({ status: 'error', payload: `No fue posible agregar el producto al carrito. Detalle: ${error}` })
     }
 }

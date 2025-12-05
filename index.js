@@ -7,6 +7,7 @@ import rootRouter from "./routes/root.route.js"
 import { Server } from "socket.io"
 import http from "http"
 import handlebars from "express-handlebars"
+import mongoose from "mongoose"
 
 
 const app = express();
@@ -43,12 +44,22 @@ async function init() {
 
     app.locals.servidorWS = servidorWS;
 
+    mongoose.connect("mongodb://localhost:27017/demo_db")
+    .then(() => {
+        console.log(`🚀 ~ init ~ mongoose.connected`)
+        servidor.listen(PORT, () => {
+            console.log(`Serivdor iniciado en el puerto ${PORT}`)
+        })
+    })
+    .catch((error) => {
+        console.log("🚀 ~ init ~ error:", error)
+    })
+
+
     /*app.listen(PORT, () => {
         console.log(`Servidor iniciado en el puerto ${PORT}`);
     });*/
-    servidor.listen(PORT, () => {
-        console.log(`Serivdor iniciado en el puerto ${PORT}`)
-    })
+
 }
 
 init().catch(error => {
