@@ -53,10 +53,12 @@ export const getProducts = async (req,res) => {
         res.status(200).json({ 
             status: 'success', 
             payload: respuesta, 
-            page: page, 
             totalPages: totalPages,
             prevPage: hasPrevPage ? page - 1 : null,
             nextPage: hasNextPage ? page + 1 : null,
+            page: page, 
+            hasPrevPage: hasPrevPage,
+            hasNextPage: hasNextPage,
             prevLink: prevLink,
             nextLink: nextLink
         })

@@ -6,7 +6,6 @@ const cartSchema = new Schema({
     //id se crea automaticamente.
     products: [
         {
-            //type: productSchema,
             productId: {
                 type: String,
                 required: true
@@ -16,7 +15,7 @@ const cartSchema = new Schema({
                 required: true
             }
         }
-    ]
+    ],
 })
 
 
