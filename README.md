@@ -44,12 +44,12 @@ Recibe desde el body { "quantity": x } y actualiza la cantidad de dicho producto
 
 ### **GET `/api/products/`**
 Devuelve todos los productos.
-Se agrega la posibilidad de pasar como query params: limit, page, sort y query - todos parámetros opcionales -
-Se simula la paginación con dichos parámetros, en caso de no estar presentes limit y page se setean a 10 y 1 respectivamente
-Sort toma el valor de 1 o -1 para ordenar los resultados de manera ascendente o descendente en relación a su precio
+Se agrega la posibilidad de pasar como query params: limit, page, sort y query - todos parámetros opcionales.
+Se simula la paginación con dichos parámetros, en caso de no estar presentes limit y page se setean a 10 y 1 respectivamente.
+Sort toma el valor de 1 o -1 para ordenar los resultados de manera ascendente o descendente en relación a su precio.
 El parámetro query lo usamos como filtro, se debe enviar como valor del mismo el siguiente formato atributo:valor para filtrar los productos
-según cualquiera de los atributos presentes en ellos
-La respuesta de este endpoint ahora devuelve todos los datos de paginación solicitados
+según cualquiera de los atributos presentes en ellos.
+La respuesta de este endpoint ahora devuelve todos los datos de paginación solicitados.
 
 ### **GET `/api/products/:pid`**
 Devuelve un producto por su ID.
